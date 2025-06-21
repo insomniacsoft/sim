@@ -9,7 +9,7 @@ export const listTool: ToolConfig<GoogleDriveToolParams, GoogleDriveListResponse
   oauth: {
     required: true,
     provider: 'google-drive',
-    additionalScopes: ['https://www.googleapis.com/auth/drive.file'],
+    additionalScopes: ['https://www.googleapis.com/auth/drive'],
   },
   params: {
     accessToken: {
@@ -50,8 +50,8 @@ export const listTool: ToolConfig<GoogleDriveToolParams, GoogleDriveListResponse
 
       if (params.query) {
         const existingQ = url.searchParams.get('q')
-        const queryPart = `name contains '${params.query}'`
-        url.searchParams.set('q', `${existingQ} and ${queryPart}`)
+        //const queryPart = `name contains '${params.query}'`
+        url.searchParams.set('q', `${existingQ} and ${params.query}`)
       }
       if (params.pageSize) {
         url.searchParams.append('pageSize', params.pageSize.toString())
